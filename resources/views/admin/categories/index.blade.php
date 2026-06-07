@@ -1,0 +1,5 @@
+<x-layouts.dashboard title="Categories">
+    <div class="mb-4 flex justify-end"><x-button :href="route('admin.categories.create')"><x-icon name="plus" class="size-4" /> New category</x-button></div>
+    <x-card class="overflow-hidden"><table class="w-full text-left text-sm"><thead class="bg-slate-100 dark:bg-white/5"><tr><th class="p-4">Name</th><th>Posts</th><th>Actions</th></tr></thead><tbody class="divide-y divide-slate-200 dark:divide-white/10">@foreach ($categories as $category)<tr><td class="p-4 font-medium">{{ $category->name }}</td><td>{{ $category->posts_count }}</td><td class="space-x-2"><a href="{{ route('admin.categories.edit', $category) }}">Edit</a><form class="inline" method="POST" action="{{ route('admin.categories.destroy', $category) }}" onsubmit="return confirm('Delete this category?')">@csrf @method('DELETE')<button class="text-rose-600">Delete</button></form></td></tr>@endforeach</tbody></table></x-card>
+    <x-pagination-wrapper :items="$categories" />
+</x-layouts.dashboard>
