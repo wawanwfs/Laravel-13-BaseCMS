@@ -1,4 +1,4 @@
-name: Run NexaBlog with Live Tunnel (6 Hours)
+name: Run BaseCMS with Live Tunnel
 
 on:
   workflow_dispatch:
