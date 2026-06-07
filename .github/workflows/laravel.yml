@@ -27,6 +27,18 @@ jobs:
       - name: Install Composer Dependencies
         run: composer install --no-interaction --no-progress --prefer-dist
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install NPM Dependencies
+        run: npm ci
+
+      - name: Build Frontend Assets
+        run: npm run build
+
       - name: Setup SQLite Database
         run: |
           mkdir -p database
